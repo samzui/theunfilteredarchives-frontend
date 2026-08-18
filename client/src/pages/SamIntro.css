@@ -1,0 +1,2321 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   SAM INTRO — PAPER / CUTOUT COLLAGE
+   ========================================================= */
+
+
+
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.sam-page {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      rgba(41, 32, 43, 0.035) 1px,
+      transparent 1px
+    ),
+    #eee9df;
+
+  background-size: 5px 5px;
+
+  color: #29202b;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.sam-page h1,
+.sam-page h2 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  margin: 0;
+}
+
+.sam-section-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8f6679;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.sam-hero {
+  min-height: 100vh;
+  position: relative;
+  padding: 100px 8vw;
+}
+
+.sam-small-text {
+  position: absolute;
+  top: 90px;
+  left: 8vw;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+
+/* MAIN HERO HEADING — CHUNKY PIXEL / ARCADE */
+
+.sam-title {
+  position: absolute;
+  z-index: 20 !important;
+
+  width: 800px;
+  max-width: 58vw;
+  left: 7vw;
+  top: 24%;
+  margin: 0;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+
+  font-size: clamp(58px, 5.2vw, 88px);
+  line-height: 1.35;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+
+  text-align: center;
+  color: #29202b;
+
+  /* chunky dark pixel outline + offset shadow */
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+
+  transform: translateX(-1.5vw) !important;
+  transform-origin: center;
+}
+
+.sam-title span {
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-style: normal;
+
+  color: #8f6679;
+
+  -webkit-text-stroke: 2px #29202b;
+
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(41, 32, 43, 0.25);
+
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+}
+
+/* Explicit vertical gap between the three hero-title lines. */
+.sam-title br {
+  display: block;
+  content: "";
+  height: 32px;
+  line-height: 0;
+}
+
+/* =========================================================
+   CUTOUT
+   ========================================================= */
+
+.sam-cutout {
+  position: absolute;
+  z-index: 3;
+}
+
+
+/* Actual image inside cutout */
+
+.sam-cutout img {
+  display: block;
+
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+.sam-cutout-reveal {
+  position: absolute;
+  right: 12%;
+  top: 12%;
+  z-index: 8;
+
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  cursor: pointer;
+  transform: rotate(4deg);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* paper tape holding the portrait to the page */
+.sam-cutout-reveal::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 37%;
+  width: 118px;
+  height: 42px;
+  background: rgba(221, 201, 164, 0.78);
+  box-shadow: 0 1px 4px rgba(41, 32, 43, 0.08);
+  transform: rotate(4deg);
+  z-index: 2;
+}
+
+/* curled hand-drawn arrow below the portrait, pointing back up to it */
+.sam-cutout-reveal::after {
+  content: "";
+  position: absolute;
+  left: -92px;
+  bottom: -55px;
+  width: 122px;
+  height: 105px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 122 105'%3E%3Cpath d='M8 96 C3 72 7 49 29 38 C50 27 76 30 96 14' fill='none' stroke='%2329202b' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M96 14 L82 12 M96 14 L91 27' fill='none' stroke='%2329202b' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: rotate(-7deg);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sam-cutout-reveal img {
+  width: 300px;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.08));
+
+  transition: transform 0.25s ease;
+}
+
+.sam-cutout-reveal span {
+  position: relative;
+  z-index: 9;
+  width: 280px;
+  margin-top: 20px;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+  color: #29202b;
+  text-align: center;
+}
+
+/* Keep the wording controlled by the TSX faceRevealed state. */
+.sam-cutout-reveal span::before,
+.sam-cutout-reveal span::after {
+  content: none;
+}
+
+.sam-cutout-reveal:hover img {
+  transform: rotate(-2deg) scale(1.03);
+}
+
+
+/* IMAGE POSITIONS */
+
+.sam-cutout-one {
+  right: 12%;
+  bottom: 12%;
+  transform: rotate(4deg);
+}
+
+.sam-cutout-two {
+  right: 8%;
+  top: 35%;
+  transform: rotate(-5deg);
+}
+
+.sam-cutout-three {
+  right: 12%;
+  top: 20%;
+  transform: rotate(5deg);
+}
+
+.sam-cutout-four {
+  right: 12%;
+  top: 25%;
+  transform: rotate(-4deg);
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.08));
+}
+
+.sam-cutout-four img {
+  width: 220px;
+  height: auto;
+}
+
+
+/* =========================================================
+   FACE REVEAL
+   ========================================================= */
+
+.face-reveal {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.face-reveal img {
+  transition: transform 0.3s ease;
+}
+
+.face-reveal:hover img {
+  transform: scale(1.02);
+}
+
+.face-reveal span {
+  display: block;
+
+  margin-top: 10px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 18px;
+
+  color: #8f6679;
+
+  text-align: center;
+}
+
+
+/* Revealed image */
+
+.revealed-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 300px !important;
+  height: 500px !important;
+  max-height: 500px;
+  object-fit: contain;
+
+  transform: none;
+  z-index: 11;
+  box-shadow: 0 12px 30px rgba(41, 32, 43, 0.18);
+}
+
+/* Hide the original portrait once the revealed image is rendered. */
+.sam-cutout-reveal:has(.revealed-face) > img:first-of-type {
+  opacity: 0;
+}
+
+
+/* =========================================================
+   RANDOM NOTES
+   ========================================================= */
+
+.sam-note {
+  position: absolute;
+
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #8f6679;
+}
+
+.sam-note-one {
+  left: 30vw;
+  top: 52%;
+  right: auto;
+  bottom: auto;
+  z-index: 12;
+  font-size: 28px;
+  transform: translateX(8%);
+}
+
+.sam-note-two {
+  left: 10%;
+  top: 75%;
+  transform: rotate(-6deg);
+}
+
+.sam-note-three {
+  right: 15%;
+  bottom: 20%;
+  transform: rotate(4deg);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.sam-intro {
+  min-height: auto;
+  position: relative;
+
+  padding: 40px 8vw 20px;
+}
+
+.sam-intro-content {
+  max-width: 700px;
+  margin: 80px auto;
+}
+
+.sam-intro-content h2 {
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700;
+  font-size: clamp(48px, 5.2vw, 78px);
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-intro-content h2 em {
+  color: #8f6679;
+}
+
+.sam-lead {
+  margin-top: 80px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  line-height: 1.05;
+}
+
+.sam-intro-content p:not(.sam-lead) {
+  max-width: 520px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PERSONALITY
+   ========================================================= */
+
+.sam-personality {
+  min-height: 100vh;
+  position: relative;
+  padding: 40px 8vw 120px;
+}
+
+.personality-heading {
+  max-width: 900px;
+  margin: 100px auto 0;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.personality-heading em {
+  color: #8f6679;
+}
+
+.sam-photo-grid {
+  position: relative;
+  height: 500px;
+  margin-top: -40px;
+}
+
+.personality-content {
+  max-width: 700px;
+  margin: 40px auto 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.personality-content p {
+  margin: 0 0 18px;
+}
+
+.personality-content article {
+  margin-bottom: 44px;
+}
+
+.personality-content h3 {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 600;
+  color: #29202b;
+}
+
+.sam-photo img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sam-photo {
+  position: absolute;
+}
+
+.photo-one {
+  left: 15%;
+  top: 20%;
+  transform: rotate(-5deg);
+}
+
+.photo-two {
+  right: 10%;
+  top: 8%;
+  transform: rotate(6deg);
+}
+
+.photo-three {
+  left: 45%;
+  bottom: 0;
+  transform: rotate(-3deg);
+}
+
+.sam-personality .personality-content article:last-child {
+  position: relative;
+}
+
+.sam-side-note {
+  position: relative;
+  clear: both;
+  display: block;
+  width: 100%;
+  margin: 28px 0 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 25px;
+  line-height: 1.45;
+}
+
+.personality-note-image {
+  position: absolute;
+  right: -180px;
+  bottom: 0;
+  transform: rotate(5deg);
+}
+
+.personality-note-image img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.08));
+}
+
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.sam-story {
+  min-height: 68vh;
+  position: relative;
+  padding: 40px 8vw 55px;
+}
+
+.sam-story-heading {
+  max-width: 720px;
+  margin: 45px 0 0 12%;
+}
+
+.sam-story-heading span {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.sam-story-heading h2 {
+  max-width: 720px;
+  margin-top: 24px;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-story-heading em {
+  color: #8f6679;
+}
+
+.sam-story-text {
+  max-width: 520px;
+  margin: 60px 0 0 12%;
+}
+
+.sam-story-text p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.sam-big-aside {
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: 48px !important;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: #8f6679;
+  -webkit-text-stroke: 1px #29202b;
+  text-shadow: 3px 3px 0 #29202b;
+  transform: rotate(-2deg);
+}
+
+
+/* =========================================================
+   SIDE QUESTS
+   ========================================================= */
+
+.sam-sidequests {
+  min-height: 72vh;
+  position: relative;
+  padding: 30px 8vw 80px;
+}
+
+.sam-sidequests h2 {
+  max-width: 900px;
+  margin: 25px auto 55px;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-sidequests h2 em {
+  color: #8f6679;
+}
+
+.sidequest-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 520px) 220px;
+  column-gap: 55px;
+  align-items: end;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sidequest-content > p {
+  grid-column: 1;
+  grid-row: 1;
+  max-width: 520px;
+  margin: 0;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.sidequest-note-image {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+  justify-self: end;
+  width: fit-content;
+  transform: translateX(65px) rotate(-5deg);
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.08));
+}
+
+.sidequest-note-image img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sidequest-content .sam-note-three {
+  grid-column: 1;
+  grid-row: 2;
+  position: relative;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  top: auto;
+  clear: both;
+  display: block;
+  width: 100%;
+  margin: 28px 0 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 25px;
+  line-height: 1.45;
+  color: #8f6679;
+  text-align: left;
+  transform: none;
+}
+
+
+/* =========================================================
+   CHAOS
+   ========================================================= */
+
+.sam-chaos {
+  min-height: 78vh;
+  position: relative;
+
+  padding: 45px 8vw 100px;
+
+  background: #8f6679;
+  color: #eee9df;
+}
+
+.sam-chaos h2 {
+  max-width: 900px;
+  margin: 35px 0 65px 28%;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #eee9df;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(41, 32, 43, 0.3);
+}
+
+.sam-chaos h2 em {
+  color: #d2aeba;
+}
+
+.chaos-left-image {
+  position: absolute;
+  left: 8%;
+  top: 205px;
+  transform: rotate(-5deg);
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.12));
+}
+
+.chaos-left-image img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sam-chaos p {
+  max-width: 500px;
+  margin-left: 28%;
+
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.8;
+}
+
+.sam-chaos-aside {
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic;
+  font-size: 30px;
+  color: #d2aeba;
+}
+
+
+/* =========================================================
+   AI
+   ========================================================= */
+
+.sam-ai {
+  min-height: 100vh;
+  position: relative;
+  padding: 120px 8vw;
+}
+
+.sam-ai h2 {
+  margin: 70px auto 55px;
+  max-width: 1000px;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-ai h2 em {
+  color: #8f6679;
+}
+
+.sam-ai p {
+  max-width: 450px;
+  margin-left: 20%;
+
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+.sam-ending {
+  min-height: 90vh;
+  margin-top: -28vh;
+  padding: 80px 8vw 120px;
+  position: relative;
+}
+
+.sam-ending h2 {
+  margin: 70px 0 55px 15%;
+  max-width: 1000px;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #29202b;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-ending h2 em {
+  color: #8f6679;
+}
+
+.sam-ending-text {
+  max-width: 520px;
+  margin-left: 15%;
+
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.8;
+}
+
+.ending-right-image {
+  position: absolute;
+  right: 10%;
+  top: 38%;
+  transform: rotate(5deg);
+  filter: drop-shadow(6px 8px 0 rgba(41, 32, 43, 0.08));
+}
+
+.ending-right-image img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* =========================================================
+   FINAL
+   ========================================================= */
+
+.sam-final {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 100px 8vw;
+
+  background: #29202b;
+  color: #eee9df;
+
+  text-align: center;
+}
+
+.sam-final-small {
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.sam-final h2 {
+  margin: 55px auto 35px;
+  max-width: 1000px;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  font-size: clamp(42px, 5vw, 78px);
+  line-height: 1.1;
+  letter-spacing: 0.16em;
+  word-spacing: 0.32em;
+  color: #eee9df;
+  -webkit-text-stroke: 2px #29202b;
+  text-shadow:
+    4px 4px 0 #29202b,
+    7px 7px 0 rgba(143, 102, 121, 0.35);
+}
+
+.sam-final h2 em {
+  color: #d2aeba;
+}
+
+.final-heading-image {
+  width: fit-content;
+  margin: 0 auto 38px;
+  transform: rotate(-4deg);
+  filter: drop-shadow(6px 8px 0 rgba(0, 0, 0, 0.16));
+}
+
+.final-heading-image img {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.sam-final p {
+  max-width: 400px;
+
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+}
+
+.sam-thanks {
+  margin-top: 70px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 35px;
+}
+
+.sam-thanks span {
+  font-size: 17px;
+  color: #d2aeba;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+/* =========================================================
+   MOBILE — KEEP THE DESKTOP COMPOSITION, JUST SCALE IT DOWN
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  /* ---------- GENERAL ---------- */
+
+  .sam-hero,
+  .sam-intro,
+  .sam-personality,
+  .sam-story,
+  .sam-sidequests,
+  .sam-chaos,
+  .sam-ai,
+  .sam-ending {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .sam-section-label {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+
+  /* =========================================================
+   HERO — MOBILE
+   Same composition as laptop, scaled down
+   ========================================================= */
+
+.sam-hero {
+  min-height: auto;
+  height: auto;
+
+  padding: 55px 20px 45px;
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) 145px;
+
+  grid-template-rows: auto auto;
+
+  column-gap: 12px;
+  row-gap: 10px;
+
+  align-items: start;
+}
+
+
+/* ---------- small top label ---------- */
+
+.sam-small-text {
+  position: absolute;
+
+  top: 30px;
+  left: 20px;
+
+  font-size: 8px;
+  letter-spacing: 0.10em;
+}
+
+
+/* ---------- MAIN HERO HEADING ---------- */
+
+.sam-title {
+  position: relative;
+
+  left: auto;
+  top: auto;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  width: auto;
+  max-width: none;
+
+  margin: 0;
+
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+
+  /* laptop-style size, scaled for phone */
+  font-size: 30px !important;
+  line-height: 0.95;
+
+  letter-spacing: 0.02em;
+  word-spacing: 0.04em;
+
+  text-align: left;
+
+  color: #29202b;
+
+  -webkit-text-stroke: 1px #29202b;
+
+  text-shadow:
+    2px 2px 0 #29202b;
+
+  transform: none !important;
+}
+
+
+/* ABOUT ME keeps exactly the same font */
+
+.sam-title span {
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+
+  color: #8f6679;
+
+  letter-spacing: 0.02em;
+  word-spacing: 0.04em;
+
+  -webkit-text-stroke: 1px #29202b;
+
+  text-shadow:
+    2px 2px 0 #29202b;
+}
+
+
+/* Reduce the giant gaps between heading lines */
+
+.sam-title br {
+  display: block;
+
+  height: 7px;
+
+  line-height: 0;
+}
+
+
+/* =========================================================
+   HERO IMAGE — stays BESIDE heading
+   ========================================================= */
+
+.sam-cutout-reveal {
+  position: relative;
+
+  right: auto;
+  top: auto;
+
+  grid-column: 2;
+  grid-row: 1 / 3;
+
+  width: 145px;
+
+  margin: 0;
+
+  padding: 0;
+
+  align-self: start;
+  justify-self: center;
+
+  transform: rotate(4deg);
+}
+
+
+/* actual portrait */
+
+.sam-cutout-reveal img {
+  width: 145px;
+
+  max-width: 145px;
+  max-height: 245px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* caption underneath portrait */
+
+.sam-cutout-reveal span {
+  position: relative;
+
+  width: 135px;
+
+  margin-top: 8px;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 8px;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+
+  text-align: center;
+
+  color: #29202b;
+}
+
+
+/* smaller tape */
+
+.sam-cutout-reveal::before {
+  top: -9px;
+
+  left: 30%;
+
+  width: 65px;
+  height: 23px;
+}
+
+
+/* don't let the decorative arrow create extra space */
+
+.sam-cutout-reveal::after {
+  display: none;
+}
+
+
+/* =========================================================
+   "okay fine." — DIRECTLY UNDER THE HEADING
+   ========================================================= */
+
+.sam-note-one {
+  position: relative;
+
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+
+  grid-column: 1;
+  grid-row: 2;
+
+  width: 100%;
+
+  margin: 0;
+
+  padding: 0;
+
+  align-self: start;
+  justify-self: center;
+
+  text-align: center;
+
+  font-family: "Bodoni Moda", serif;
+
+  font-style: italic;
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  color: #8f6679;
+
+  transform: none;
+}
+
+  /* =========================================================
+     INTRO — TEXT + IMAGE SIDE BY SIDE
+     ========================================================= */
+
+  .sam-intro {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 60px;
+  }
+
+  .sam-intro-content {
+    max-width: none;
+    margin: 45px 0 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 105px;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .sam-intro-content h2 {
+    grid-column: 1;
+
+    font-size: 31px !important;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    word-spacing: 0.04em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sam-lead {
+    grid-column: 1;
+
+    margin-top: 28px;
+
+    font-size: 20px;
+    line-height: 1.05;
+  }
+
+  .sam-intro-content p:not(.sam-lead) {
+    grid-column: 1;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sam-cutout-two {
+    position: relative;
+
+    right: auto;
+    top: auto;
+
+    grid-column: 2;
+    grid-row: 1 / span 3;
+
+    margin: 0;
+
+    transform: rotate(-5deg);
+    align-self: center;
+  }
+
+  .sam-cutout-two img {
+    width: 105px;
+  }
+
+
+  /* =========================================================
+     PERSONALITY
+     ========================================================= */
+
+  .sam-personality {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 70px;
+  }
+
+  .personality-heading {
+    max-width: none;
+
+    margin: 45px 0 30px;
+
+    font-size: 32px !important;
+    line-height: 0.98;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  /* Keep personality photos compact */
+  .sam-photo-grid {
+    height: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    margin-top: 25px;
+  }
+
+  .sam-photo {
+    position: relative;
+
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+
+    margin: 0;
+  }
+
+  .sam-photo img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .personality-content {
+    max-width: none;
+    margin: 35px 0 0;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .personality-content article {
+    margin-bottom: 30px;
+  }
+
+  .personality-content h3 {
+    font-size: 22px;
+    line-height: 1.05;
+  }
+
+  .personality-note-image {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+
+    width: fit-content;
+
+    margin: 20px auto 0;
+  }
+
+  .personality-note-image img {
+    width: 125px;
+  }
+
+  .sam-side-note {
+    font-size: 18px;
+  }
+
+
+  /* =========================================================
+     STORY — HEADING + TEXT + IMAGE
+     ========================================================= */
+
+  .sam-story {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 65px;
+  }
+
+  .sam-story-heading {
+    max-width: none;
+    margin: 35px 0 0;
+  }
+
+  .sam-story-heading span {
+    font-size: 9px;
+  }
+
+  .sam-story-heading h2 {
+    max-width: none;
+
+    margin-top: 18px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sam-story-text {
+    max-width: none;
+    margin: 30px 0 0;
+
+    font-size: 13px;
+  }
+
+  .sam-story-text p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sam-big-aside {
+    font-size: 32px !important;
+  }
+
+  .sam-cutout-three {
+    position: relative;
+
+    right: auto;
+    top: auto;
+
+    margin: 20px 0 0 auto;
+
+    width: 125px;
+
+    transform: rotate(5deg);
+  }
+
+  .sam-cutout-three img {
+    width: 125px;
+  }
+
+
+  /* =========================================================
+     SIDE QUESTS — TEXT + IMAGE BESIDE EACH OTHER
+     ========================================================= */
+
+  .sam-sidequests {
+    min-height: auto;
+    padding-top: 45px;
+    padding-bottom: 70px;
+  }
+
+  .sam-sidequests h2 {
+    max-width: none;
+
+    margin: 30px 0 35px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sidequest-content {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 105px;
+
+    column-gap: 12px;
+
+    max-width: none;
+    margin: 0;
+
+    align-items: center;
+  }
+
+  .sidequest-content > p {
+    grid-column: 1;
+
+    max-width: none;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sidequest-note-image {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+    top: auto;
+
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 105px;
+
+    margin: 0;
+
+    transform: rotate(-5deg);
+  }
+
+  .sidequest-note-image img {
+    width: 105px;
+  }
+
+  .sidequest-content .sam-note-three {
+    grid-column: 1 / -1;
+
+    margin-top: 22px;
+
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+
+  /* =========================================================
+     CHAOS — IMAGE + HEADING COMPOSITION
+     ========================================================= */
+
+  .sam-chaos {
+    min-height: auto;
+
+    padding-top: 45px;
+    padding-bottom: 70px;
+  }
+
+  .chaos-left-image {
+    position: relative;
+
+    left: auto;
+    top: auto;
+
+    float: right;
+
+    width: 105px;
+
+    margin: 0 0 15px 12px;
+
+    transform: rotate(-5deg);
+  }
+
+  .chaos-left-image img {
+    width: 105px;
+  }
+
+  .sam-chaos h2 {
+    max-width: none;
+
+    margin: 30px 0 35px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sam-chaos p {
+    max-width: none;
+
+    margin-left: 0;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sam-chaos-aside {
+    font-size: 20px;
+  }
+
+
+  /* =========================================================
+     AI — IMAGE BESIDE TEXT
+     ========================================================= */
+
+  .sam-ai {
+    min-height: auto;
+
+    padding-top: 65px;
+    padding-bottom: 70px;
+  }
+
+  .sam-ai h2 {
+    margin: 40px 0 30px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sam-ai p {
+    max-width: none;
+
+    margin-left: 0;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sam-cutout-four {
+    position: relative;
+
+    right: auto;
+    top: auto;
+
+    float: right;
+
+    width: 110px;
+
+    margin: 0 0 15px 15px;
+
+    transform: rotate(-4deg);
+  }
+
+  .sam-cutout-four img {
+    width: 110px;
+  }
+
+
+  /* =========================================================
+     ENDING — TEXT + IMAGE
+     ========================================================= */
+
+  .sam-ending {
+    min-height: auto;
+
+    margin-top: 0;
+
+    padding-top: 55px;
+    padding-bottom: 75px;
+  }
+
+  .sam-ending h2 {
+    max-width: none;
+
+    margin: 40px 0 30px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .sam-ending-text {
+    max-width: none;
+
+    margin-left: 0;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .ending-right-image {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    float: right;
+
+    width: 110px;
+
+    margin: 0 0 15px 15px;
+
+    transform: rotate(5deg);
+  }
+
+  .ending-right-image img {
+    width: 110px;
+  }
+
+
+  /* =========================================================
+     FINAL
+     ========================================================= */
+
+  .sam-final {
+    min-height: auto;
+
+    padding: 75px 20px;
+  }
+
+  .sam-final-small {
+    font-size: 8px;
+    line-height: 1.4;
+  }
+
+  .sam-final h2 {
+    max-width: none;
+
+    margin: 40px auto 25px;
+
+    font-size: 32px !important;
+    line-height: 1;
+
+    letter-spacing: 0.03em;
+    word-spacing: 0.05em;
+
+    -webkit-text-stroke: 1px #29202b;
+
+    text-shadow:
+      2px 2px 0 #29202b;
+  }
+
+  .final-heading-image {
+    margin: 0 auto 25px;
+  }
+
+  .final-heading-image img {
+    width: 130px;
+  }
+
+  .sam-final p {
+    max-width: 300px;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .sam-thanks {
+    margin-top: 40px;
+    font-size: 27px;
+  }
+
+  .sam-thanks span {
+    font-size: 13px;
+  }
+
+
+  /* ---------- FACE REVEAL ---------- */
+
+  .revealed-face {
+    width: 145px !important;
+    height: 260px !important;
+    max-height: 260px;
+  }
+  /* =========================================================
+   MOBILE — HERO + THE LORE FIX
+   ========================================================= */
+
+/* ---------- HERO ---------- */
+
+.sam-hero {
+  min-height: auto !important;
+  padding: 25px 20px 35px !important;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  grid-template-rows: auto auto auto;
+  column-gap: 10px;
+  align-items: center;
+}
+
+/* Small label */
+.sam-hero .sam-small-text {
+  position: static !important;
+  grid-column: 1 / -1;
+  margin: 0 0 12px;
+}
+
+/* Main hero title */
+.sam-hero .sam-title {
+  position: static !important;
+  grid-column: 1;
+  grid-row: 2;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 !important;
+
+  font-size: 32px !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0 !important;
+
+  transform: none !important;
+}
+
+/* Hero image stays beside the text */
+.sam-hero .sam-cutout-reveal {
+  position: static !important;
+  grid-column: 2;
+  grid-row: 2 / 4;
+
+  width: 100%;
+  max-width: 150px;
+
+  margin: 0 auto !important;
+
+  transform: rotate(4deg);
+}
+
+/* Keep the actual image compact */
+.sam-hero .sam-cutout-reveal > img:first-child {
+  width: 145px !important;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text underneath the hero image */
+.sam-hero .sam-cutout-reveal span {
+  width: 100%;
+  max-width: 145px;
+
+  margin-top: 8px;
+
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+/* "okay fine." BELOW the title, centered */
+.sam-hero .sam-note-one {
+  position: static !important;
+
+  grid-column: 1;
+  grid-row: 3;
+
+  width: 100%;
+
+  margin: 10px 0 0 !important;
+
+  font-size: 19px !important;
+
+  text-align: center;
+
+  transform: none !important;
+}
+
+
+/* ---------- THE LORE ---------- */
+
+.sam-intro {
+  min-height: auto !important;
+
+  padding: 20px 20px 45px !important;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 115px;
+  column-gap: 14px;
+  align-items: start;
+}
+
+/* Section label spans the whole section */
+.sam-intro > .sam-section-label {
+  grid-column: 1 / -1;
+  margin: 0 0 20px;
+}
+
+/* Text stays on LEFT */
+.sam-intro-content {
+  grid-column: 1;
+  grid-row: 2;
+
+  width: 100%;
+  max-width: none;
+
+  margin: 0 !important;
+}
+
+/* Lore heading */
+.sam-intro-content h2 {
+  margin: 0 0 20px !important;
+
+  font-size: 29px !important;
+  line-height: 0.95 !important;
+
+  letter-spacing: 0.02em !important;
+  word-spacing: 0 !important;
+
+  -webkit-text-stroke: 1px #29202b !important;
+  text-shadow: 2px 2px 0 #29202b !important;
+}
+
+/* First paragraph — smaller than heading */
+.sam-intro-content .sam-lead {
+  margin: 0 0 18px !important;
+
+  font-size: 18px !important;
+  line-height: 1.1 !important;
+}
+
+/* Remove the <br> from the JSX from creating extra spacing */
+.sam-intro-content .sam-lead + br {
+  display: none;
+}
+
+/* Main paragraph */
+.sam-intro-content p:not(.sam-lead) {
+  margin: 0 !important;
+
+  max-width: none;
+
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+/* Image on RIGHT */
+.sam-intro .sam-cutout-two {
+  grid-column: 2;
+  grid-row: 2;
+
+  position: static !important;
+
+  width: 100%;
+  margin: 10px 0 0 !important;
+
+  transform: rotate(-5deg);
+}
+
+/* Actual Lore image */
+.sam-intro .sam-cutout-two img {
+  display: block;
+
+  width: 105px !important;
+  max-width: 100%;
+  height: auto;
+}
+}
+
+
+/* =========================================================
+   LORE — FINAL MOBILE REFERENCE OVERRIDE ONLY
+   ========================================================= */
+@media (max-width: 760px) {
+  .sam-intro {
+    display: block !important;
+    position: relative;
+    padding: 20px 20px 45px !important;
+  }
+
+  .sam-intro > .sam-section-label {
+    display: block;
+    margin: 0 0 20px;
+  }
+
+  .sam-intro-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+  }
+
+  .sam-intro-content h2 {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 31px !important;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    word-spacing: 0.04em;
+    -webkit-text-stroke: 1px #29202b;
+    text-shadow: 2px 2px 0 #29202b;
+  }
+
+  .sam-lead {
+    display: block;
+    width: 100%;
+    margin: 28px 0 0;
+    font-size: 20px;
+    line-height: 1.05;
+  }
+
+  .sam-intro-content .sam-lead + br {
+    display: block !important;
+    height: 24px;
+    line-height: 0;
+  }
+
+  .sam-intro-content p:not(.sam-lead) {
+    display: block;
+    width: calc(100% - 145px) !important;
+    max-width: none;
+    margin: 0 !important;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .sam-cutout-two {
+    position: absolute !important;
+    top: 315px;
+    right: 0;
+    left: auto;
+    margin: 0;
+    transform: rotate(-5deg);
+    z-index: 2;
+  }
+
+  .sam-cutout-two img {
+    width: 125px;
+    max-width: 125px;
+    height: auto;
+  }
+}
+
+
+/* LORE — MOBILE TEXT-FLOW CORRECTION */
+@media (max-width: 760px) {
+  .sam-intro {
+    display: block !important;
+    position: relative;
+  }
+
+  .sam-intro-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* Keep the main lead exactly as before. */
+  .sam-intro-content .sam-lead {
+    width: 100% !important;
+  }
+
+  /* Only the opening "Well, hi..." line uses the shorter measure. */
+  .sam-intro-content .sam-lore-opening {
+    width: calc(100% - 145px) !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* Float the image beside the long paragraph, then let the text return to full width. */
+  .sam-intro-content .sam-cutout-two {
+    position: static !important;
+    float: right !important;
+    width: 125px !important;
+    margin: 0 0 12px 18px !important;
+    transform: rotate(-5deg) !important;
+    z-index: 2;
+  }
+
+  .sam-intro-content .sam-cutout-two img {
+    display: block;
+    width: 125px !important;
+    max-width: 125px !important;
+    height: auto;
+  }
+
+  .sam-intro-content .sam-lore-body {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 14px 0 0 !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+}
+
+
+/* PERSONALITY — MOBILE PHOTO AND FINAL-PARAGRAPH CORRECTION */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: auto;
+    column-gap: 14px !important;
+    row-gap: 22px !important;
+    align-items: start;
+  }
+
+  .sam-personality .sam-photo {
+    width: 100% !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  .sam-personality .sam-photo-three {
+    grid-column: 1 / 2 !important;
+    grid-row: 2 !important;
+    width: 78% !important;
+    justify-self: center;
+  }
+
+  .sam-personality .personality-note-image {
+    float: right !important;
+    position: static !important;
+    width: 125px !important;
+    margin: 0 0 12px 18px !important;
+    transform: rotate(-5deg);
+  }
+
+  .sam-personality .personality-note-image img {
+    display: block;
+    width: 125px !important;
+    max-width: 125px !important;
+    height: auto;
+  }
+
+  .sam-personality .personality-content article:last-child p:not(.sam-side-note) {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .sam-personality .sam-side-note {
+    clear: both;
+  }
+}
+
+
+/* PERSONALITY — MOBILE PHOTO SCALE CORRECTION */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-grid {
+    column-gap: 18px !important;
+    row-gap: 14px !important;
+    padding: 0 12px;
+  }
+
+  .sam-personality .sam-photo {
+    width: 86% !important;
+    justify-self: center;
+  }
+
+  .sam-personality .sam-photo-three {
+    width: 62% !important;
+    justify-self: center;
+  }
+}
+
+
+/* PERSONALITY — CENTER THIRD MOBILE PHOTO */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-three {
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* PERSONALITY — SHIFT THIRD MOBILE PHOTO RIGHT */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-three {
+    justify-self: start !important;
+    margin-left: 105px !important;
+    margin-right: 0 !important;
+  }
+}
+
+
+/* PERSONALITY — FINAL PHOTO3 VISUAL CENTERING */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-three {
+    position: relative !important;
+    left: 105px !important;
+    justify-self: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+/* PERSONALITY — FORCE PHOTO3 INTO RIGHT MOBILE COLUMN */
+@media (max-width: 760px) {
+  .sam-personality .sam-photo-three {
+    grid-column: 2 / 3 !important;
+    grid-row: 2 !important;
+    position: static !important;
+    left: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    justify-self: center !important;
+  }
+}
+
+
+/* PERSONALITY — CORRECT PHOTO3 MOBILE TARGET */
+@media (max-width: 760px) {
+  .sam-personality .photo-three {
+    position: relative !important;
+    left: auto !important;
+    grid-column: 1 / -1 !important;
+    justify-self: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(110px) rotate(-4deg) !important;
+  }
+}
+
+
+/* PERSONALITY — FINAL PHOTO3 SIZE AND CENTER */
+@media (max-width: 760px) {
+  .sam-personality .photo-three {
+    width: 48% !important;
+    max-width: 48% !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    position: static !important;
+    left: auto !important;
+    margin: 0 auto !important;
+    justify-self: center !important;
+    transform: rotate(-4deg) !important;
+  }
+
+  .sam-personality .photo-three img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+  }
+}
+
+/* =========================================================
+   STORY — FINAL MOBILE GAP + PRE-GOTCHA IMAGE FLOW ONLY
+   ========================================================= */
+@media (max-width: 760px) {
+  /* Pull Actual Introduction closer to the preceding Lore section. */
+  .sam-story {
+    margin-top: -55px !important;
+    padding-top: 25px !important;
+  }
+
+  /* Reserve the right side only for the paragraph immediately before GOTCHA. */
+  .sam-story-text p:nth-of-type(3) {
+    width: calc(100% - 145px) !important;
+    max-width: none !important;
+  }
+
+  /* Place the cutout beside that paragraph instead of below the story. */
+  .sam-cutout-three {
+    position: absolute !important;
+    top: 390px !important;
+    right: 20px !important;
+    left: auto !important;
+    width: 120px !important;
+    margin: 0 !important;
+    transform: rotate(5deg) !important;
+    z-index: 2;
+  }
+
+  .sam-cutout-three img {
+    width: 120px !important;
+    max-width: 120px !important;
+    height: auto;
+  }
+}
+
+/* =========================================================
+   STORY — KEEP IMAGE POSITION, FLOW IMAGE BESIDE PARAGRAPH BELOW GOTCHA
+   ========================================================= */
+@media (max-width: 760px) {
+  /* The paragraph before GOTCHA returns to the normal vertical text flow. */
+  .sam-story-text p:nth-of-type(3) {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* The paragraph below GOTCHA is the one that shares space with the image. */
+  .sam-story-text p:nth-of-type(5) {
+    width: calc(100% - 145px) !important;
+    max-width: none !important;
+  }
+
+  /* Intentionally unchanged: preserves the image's current placement. */
+  .sam-cutout-three {
+    top: 390px !important;
+    right: 20px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE — SECTION SPACING REFINEMENTS ONLY
+   ========================================================= */
+@media (max-width: 760px) {
+  /* Increase the breathing room between the section 02 label and title. */
+  .sam-personality .personality-heading {
+    margin-top: 70px !important;
+  }
+
+  /* Tighten the transition from section 03 into Side Quests. */
+  .sam-story {
+    padding-bottom: 25px !important;
+  }
+
+  .sam-sidequests {
+    padding-top: 25px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE — MATCH SECTION 01 TITLE GAP
+   ========================================================= */
+@media (max-width: 760px) {
+  .sam-personality .personality-heading {
+    margin-top: 20px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE — SECTION 06 TO 07 TRANSITION ONLY
+   ========================================================= */
+@media (max-width: 760px) {
+  .sam-ai {
+    padding-bottom: 25px !important;
+  }
+
+  .sam-ending {
+    padding-top: 25px !important;
+  }
+}
