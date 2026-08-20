@@ -6,7 +6,69 @@ import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import { useLocation } from "wouter";
 
+
+
 const API_BASE_URL = "https://theunfilteredarchives-blog.onrender.com";
+function compressImageToDataUrl(
+  file: File,
+  maxWidth = 1600,
+  quality = 0.75
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (typeof reader.result !== "string") {
+        reject(new Error("Unable to read image."));
+        return;
+      }
+
+      const image = new window.Image();
+
+      image.onload = () => {
+        const scale = Math.min(1, maxWidth / image.width);
+
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(image.width * scale);
+        canvas.height = Math.round(image.height * scale);
+
+        const context = canvas.getContext("2d");
+
+        if (!context) {
+          reject(new Error("Unable to process image."));
+          return;
+        }
+
+        context.drawImage(
+          image,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        const compressed = canvas.toDataURL(
+          "image/jpeg",
+          quality
+        );
+
+        resolve(compressed);
+      };
+
+      image.onerror = () => {
+        reject(new Error("Unable to load image."));
+      };
+
+      image.src = reader.result;
+    };
+
+    reader.onerror = () => {
+      reject(new Error("Unable to read image."));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function AdminNewWriting() {
   const [, setLocation] = useLocation();
@@ -62,22 +124,22 @@ export default function AdminNewWriting() {
 
           if (!file) return;
 
-          const reader = new FileReader();
-
-          reader.onload = () => {
-            if (typeof reader.result !== "string") return;
-
-            editor
-              .chain()
-              .focus()
-              .setImage({
-                src: reader.result,
-                alt: title || "Writing image",
-              })
-              .run();
-          };
-
-          reader.readAsDataURL(file);
+          compressImageToDataUrl(file)
+  .then((compressedImage) => {
+    editor
+      .chain()
+      .focus()
+      .setImage({
+        src: compressedImage,
+        alt: title || "Writing image",
+      })
+      .run();
+  })
+  .catch(() => {
+    setError(
+      "Unable to insert that image. Please try another file."
+    );
+  });
         });
 
         return true;
@@ -91,28 +153,24 @@ export default function AdminNewWriting() {
    * in PostgreSQL because a base64 image is larger than VARCHAR(1000).
    */
   function handleCoverImageFile(file: File | null) {
-    if (!file) return;
+  if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
-      setError("Please select an image file.");
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (typeof reader.result === "string") {
-        setCoverImageUrl(reader.result);
-        setError("");
-      }
-    };
-
-    reader.onerror = () => {
-      setError("Unable to insert that cover image. Please try another file.");
-    };
-
-    reader.readAsDataURL(file);
+  if (!file.type.startsWith("image/")) {
+    setError("Please select an image file.");
+    return;
   }
+
+  compressImageToDataUrl(file)
+    .then((compressedImage) => {
+      setCoverImageUrl(compressedImage);
+      setError("");
+    })
+    .catch(() => {
+      setError(
+        "Unable to insert that cover image. Please try another file."
+      );
+    });
+}
 
   function handleCoverImagePaste(
     event: React.ClipboardEvent<HTMLDivElement>
@@ -146,41 +204,38 @@ export default function AdminNewWriting() {
     imageInputRef.current?.click();
   }
 
-  function handleImageFile(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
+  function handleImageFile(
+  event: React.ChangeEvent<HTMLInputElement>
+) {
+  const file = event.target.files?.[0];
 
-    // Allow selecting the same image again later.
-    event.target.value = "";
+  // Allow selecting the same image again later.
+  event.target.value = "";
 
-    if (!file || !editor) return;
+  if (!file || !editor) return;
 
-    if (!file.type.startsWith("image/")) {
-      setError("Please select an image file.");
-      return;
-    }
+  if (!file.type.startsWith("image/")) {
+    setError("Please select an image file.");
+    return;
+  }
 
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if (typeof reader.result !== "string") return;
-
+  compressImageToDataUrl(file)
+    .then((compressedImage) => {
       editor
         .chain()
         .focus()
         .setImage({
-          src: reader.result,
+          src: compressedImage,
           alt: title || "Writing image",
         })
         .run();
-    };
-
-    reader.onerror = () => {
-      setError("Unable to insert that image. Please try another file.");
-    };
-
-    reader.readAsDataURL(file);
-  }
-
+    })
+    .catch(() => {
+      setError(
+        "Unable to insert that image. Please try another file."
+      );
+    });
+}
   /*
    * Add a link.
    */
