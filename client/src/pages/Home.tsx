@@ -324,9 +324,7 @@ const featuredWriting =
   regularWritings.find(
     (writing) =>
       writing.featured === true
-  ) ||
-  regularWritings[0] ||
-  null;
+  ) || null;
 
 /* -----------------------------------------------------
    LATEST WRITINGS

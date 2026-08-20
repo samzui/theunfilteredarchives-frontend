@@ -3094,27 +3094,57 @@ function handleReplyClick(commentId: number) {
           }
 
           @media (max-width: 700px) {
-            .public-writing-content {
-              font-size: 17px;
-            }
+  .public-writing-content {
+    font-size: 16px;
+    line-height: 1.65;
+  }
 
-            .public-writing-content h1 {
-              font-size: 32px;
-            }
+  .public-writing-content h1 {
+    font-size: 28px;
+    line-height: 1.05;
+  }
 
-            .public-writing-content h2 {
-              font-size: 27px;
-            }
+  .public-writing-content h2 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
 
-            .public-writing-content h3 {
-              font-size: 22px;
-            }
+  .public-writing-content h3 {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 
-            article {
-              padding-left: 18px !important;
-              padding-right: 18px !important;
-            }
-          }
+  /* Mobile writing header */
+  article h1[style] {
+    font-size: 28px !important;
+    line-height: 1.08 !important;
+    max-width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  article p[style] {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 32px !important;
+  }
+
+  article figure {
+    margin-bottom: 40px !important;
+  }
+
+  article figure img {
+    width: 82% !important;
+    max-height: 360px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    object-fit: cover;
+  }
+
+  article {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
         `}
       </style>
     </div>
