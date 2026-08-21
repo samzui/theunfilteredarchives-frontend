@@ -2265,41 +2265,38 @@ function handleReplyClick(commentId: number) {
 
           {/* COVER IMAGE */}
 
-          {writing.cover_image_url && (
-            <figure
-              style={{
-                margin:
-                  "0 0 55px",
-              }}
-            >
-              <img
-                src={
-                  writing.cover_image_url
-                }
-                alt={
-                  writing.title
-                }
-                style={{
-                  width:
-                    "100%",
-                  maxHeight:
-                    "600px",
-                  objectFit:
-                    "cover",
-                  display:
-                    "block",
-                }}
-                onError={(
-                  event
-                ) => {
-                  event.currentTarget.style.display =
-                    "none";
-                }}
-              />
-            </figure>
-          )}
+{writing.cover_image_url && (
+  <figure
+    style={{
+      margin: "0 0 55px",
+      width: "100%",
+    }}
+  >
+    <img
+      src={writing.cover_image_url}
+      alt={writing.title}
+      style={{
+        width: "100%",
+        maxHeight: "600px",
+        height: "auto",
+        objectFit: "cover",
+        display: "block",
+      }}
+      onLoad={() => {
+        console.log("COVER IMAGE LOADED");
+      }}
+      onError={(event) => {
+        console.error(
+          "COVER IMAGE FAILED:",
+          writing.cover_image_url
+        );
+        event.currentTarget.style.display = "block";
+      }}
+    />
+  </figure>
+)}
 
-          {/* WRITING */}
+{/* WRITING */}
 
           <div
             className="public-writing-content"

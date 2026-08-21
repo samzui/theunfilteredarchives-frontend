@@ -9,14 +9,35 @@ import { ArrowUpRight, Instagram, Menu, X } from "lucide-react";
 const API_BASE_URL = "https://theunfilteredarchives-blog.onrender.com";
 
 const HERO_IMAGE = "/images/hero.png";
+
 const PAPER_IMAGE =
-  "/manus-storage/quietly-written-paper_9cca984b.jpg";
+  `${API_BASE_URL}/manus-storage/quietly-written-paper_9cca984b.jpg`;
+
 const WINDOW_IMAGE =
-  "/manus-storage/quietly-written-window_edfa36fe.jpg";
+  `${API_BASE_URL}/manus-storage/quietly-written-window_edfa36fe.jpg`;
+
 const INK_IMAGE =
-  "/manus-storage/quietly-written-ink_dbd1aa41.jpg";
+  `${API_BASE_URL}/manus-storage/quietly-written-ink_dbd1aa41.jpg`;
+
 const MARK_IMAGE = "/images/about-logo.png";
 const ABOUT_LOGO_IMAGE = "/images/about-logo.png";
+
+function getImageUrl(url: string | null | undefined): string | undefined {
+  if (!url) return undefined;
+
+  // Base64/data URLs should be used directly
+  if (url.startsWith("data:")) {
+    return url;
+  }
+
+  // Absolute URLs should be used directly
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+
+  // Relative URLs should use the backend URL
+  return `${API_BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+}
 
 
 
@@ -688,14 +709,29 @@ const latestWritings =
           <article className="featured-piece">
             <div className="featured-image-wrap">
               <img
-                src={
-                  featuredWriting.cover_image_url ||
-                  PAPER_IMAGE
-                }
-                alt={
-                  featuredWriting.title
-                }
-              />
+  src={getImageUrl(featuredWriting.cover_image_url)}
+  alt={featuredWriting.title}
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+  }}
+  onLoad={() => {
+    console.log(
+      "FEATURED COVER LOADED:",
+      featuredWriting.cover_image_url
+    );
+  }}
+  onError={(event) => {
+    console.error(
+      "FEATURED COVER FAILED:",
+      featuredWriting.cover_image_url
+    );
+
+    event.currentTarget.src = PAPER_IMAGE;
+  }}
+/>
 
               <span className="image-index">
                 01 /{" "}
@@ -859,18 +895,18 @@ const latestWritings =
                 >
                   <div className="archive-thumb">
                     <img
-                      src={
-                        writing.cover_image_url ||
-                        [
-                          PAPER_IMAGE,
-                          WINDOW_IMAGE,
-                          INK_IMAGE,
-                        ][
-                          index % 3
-                        ]
-                      }
-                      alt=""
-                    />
+    src={getImageUrl(writing.cover_image_url)}
+    alt={writing.title}
+    onError={(e) => {
+      e.currentTarget.onerror = null;
+      e.currentTarget.src =
+        [
+          PAPER_IMAGE,
+          WINDOW_IMAGE,
+          INK_IMAGE,
+        ][index % 3];
+    }}
+  />
                   </div>
 
                   <div className="archive-info">
@@ -1089,18 +1125,20 @@ const latestWritings =
           key={writing.id}
         >
           <div className="archive-thumb">
-            <img
-              src={
-                writing.cover_image_url ||
-                [
-                  PAPER_IMAGE,
-                  WINDOW_IMAGE,
-                  INK_IMAGE,
-                ][index % 3]
-              }
-              alt=""
-            />
-          </div>
+  <img
+    src={getImageUrl(writing.cover_image_url)}
+    alt={writing.title}
+    onError={(e) => {
+      e.currentTarget.onerror = null;
+      e.currentTarget.src =
+        [
+          PAPER_IMAGE,
+          WINDOW_IMAGE,
+          INK_IMAGE,
+        ][index % 3];
+    }}
+  />
+</div>
 
           <div className="archive-info">
             <div className="meta-row">
